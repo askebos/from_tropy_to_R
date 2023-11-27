@@ -2,7 +2,7 @@
 title: "From Tropy to R: A workflow for annotated image collections"
 author: "Astrid Van den Bossche"
 date: "23/11/2021"
-output: html_document
+output: md_document
 ---
 
 ```{r setup, include=FALSE}
@@ -181,7 +181,7 @@ annotations_graph <- annotations[["@graph"]]
 
 The following creates a new dataframe with all the selections and annotations, including those that are nested in `photos` (one level down into the item). This means that we can recover all the notes within one item. The end result is a single dataframe:
 
-```{r notes dataframe}
+```{r notes dataframe, eval=FALSE, include=FALSE}
 
 # A function to rename duplicate columns - this will be useful to 
 names <- function(name){
@@ -198,7 +198,7 @@ head(notes)
 
 [In order to parse our notes, we need to extract and process the contents of the 'Note' column. The contents are a dataframe with xyz columns; we're really only interested in `text.@value` (though `html.@value` could also come in handy if you want to work with HTML tags or be able to read in newlines). We put together a function that will extract the relevant column and parse it for us:]
 
-```{r annotations}
+```{r annotations, eval=FALSE, include=FALSE}
 # This function takes in the "note" column and splits it into 'tags' (based on the '.') and 'notes'. We use this to populate new columns of the same name
 
 getNote <- function(df, type) {
